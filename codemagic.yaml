@@ -1,0 +1,25 @@
+workflows:
+  ios-build:
+    name: iOS Build
+    max_build_duration: 30
+    environment:
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+      ios_signing:
+        distribution_type: development
+        bundle_identifier: com.myyoutube.myyoutube
+      groups:
+        - appstore_credentials
+    scripts:
+      - name: Get Flutter dependencies
+        script: flutter pub get
+      - name: Build iOS IPA
+        script: flutter build ipa --release --export-method=development
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - build/ios/archive/Runner.xcarchive
+    publishing:
+      email:
+        recipients:
+          - user@example.com
