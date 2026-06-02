@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "myyoutube - Phím Tắt YouTube",
+  "version": "1.0",
+  "description": "Điều khiển video YouTube: A (lùi 1s), D (tiến 1s), Space (play/pause)",
+  "permissions": [],
+  "host_permissions": [
+    "https://www.youtube.com/*",
+    "https://m.youtube.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://m.youtube.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
